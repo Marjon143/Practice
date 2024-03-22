@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .bar {
+            display: inline-block;
+            width: 100px;
+            height: 20px;
+            background-color: #4CAF50;
+            margin-bottom: 5px;
+        }
+        .percentage {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align: center;">Inventory Report</h2>
+
+<table id="inventoryTable">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Product 1</td>
+            <td>Category A</td>
+            <td>10</td>
+            <td>$10.00</td>
+        </tr>
+        <tr>
+            <td>Product 2</td>
+            <td>Category B</td>
+            <td>20</td>
+            <td>$15.00</td>
+        </tr>
+        <tr>
+            <td>Product 3</td>
+            <td>Category A</td>
+            <td>15</td>
+            <td>$20.00</td>
+        </tr>
+        <!-- Add more rows for additional products -->
+    </tbody>
+</table>
+
+<div>
+    <h3>Inventory Distribution</h3>
+    <div class="bar" style="width: 40%;"></div>
+    <div class="percentage">40%</div>
+    <!-- Add more bars and percentages for different categories -->
+</div>
+
+<div>
+    <h3>Total Items Sold</h3>
+    <p id="totalItemsSold">0</p>
+</div>
+
+<div>
+    <h3>Total Items Unsold</h3>
+    <p id="totalItemsUnsold">45</p>
+</div>
+
+<div>
+    <h3>Shop Analysis</h3>
+    <p>Placeholder for shop analysis, additional information, charts, etc.</p>
+</div>
+<div class="go back" style="text-align: center;">
+    <a href="index.html">Go Back</a>
+</div>
+
+<script>
+    // Function to update total items sold and unsold
+    function updateStatistics(productId, quantity) {
+        var totalItemsSoldElement = document.getElementById('totalItemsSold');
+        var totalItemsUnsoldElement = document.getElementById('totalItemsUnsold');
+
+        // Update total items sold
+        var totalItemsSold = parseInt(totalItemsSoldElement.textContent);
+        totalItemsSold += parseInt(quantity);
+        totalItemsSoldElement.textContent = totalItemsSold;
+
+        // Update total items unsold
+        var totalItemsUnsold = parseInt(totalItemsUnsoldElement.textContent);
+        totalItemsUnsold -= parseInt(quantity);
+        totalItemsUnsoldElement.textContent = totalItemsUnsold;
+    }
+
+    // Function to handle purchase
+    function selectQuantity(productId) {
+        var quantity = prompt("Enter quantity:");
+        if (quantity != null && quantity != "") {
+            // Redirect to the payment page
+            // window.location.href = "payment.html?productId=" + productId + "&quantity=" + quantity;
+            // For demonstration purposes, let's just update the statistics directly
+            updateStatistics(productId, quantity);
+        }
+    }
+</script>
+
+</body>
+</html>
